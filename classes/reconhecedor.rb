@@ -1,3 +1,12 @@
+# Obs.:
+# Vamos precisar escolher ações para serem reconhecidas pelas tarefas.
+# Sugestões:
+# - Agendar
+# - Marcar
+# - Lembrar
+# - Ligar
+require 'date'
+
 class Reconhecedor
   def initialize(texto)
     @texto = texto
@@ -9,10 +18,6 @@ class Reconhecedor
     resultDigits = resultRaw.scan(/\d{1,2}/)
     result = "#{resultDigits[0] || "00"}:#{resultDigits[1] || "00"}"
     return result
-  end
-
-  def tarefa()
-    # ???
   end
 
   def url()
@@ -33,5 +38,23 @@ class Reconhecedor
   def pessoa()
     regex = /[A-Z]{1}[a-zà-ÿ]+/
     return @texto.match(regex)
+  end
+
+  def data()
+    regex = /(\d{2}\/\d{2}(\/\d{2}(\d{2})?)?)|(\d{2}(\sde)?\s\w+((\sde)?\s\d{4})?)|((hoje)|((depois\sde\s)?amanhã))/
+    result = @texto.match(regex).to_s
+    parsed_date = nil
+
+    if result == "amanhã"
+      parsed_date = DateTime.now
+      parsed_date = parsed_date + 1
+    elsif result == "depois de amanhã"
+      parsed_date = DateTime.now
+      parsed_date = parsed_date + 2
+    else
+      parsed_date = DateTime.parse(result)
+    end
+
+    return parsed_date
   end
 end
