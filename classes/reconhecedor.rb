@@ -45,7 +45,9 @@ class Reconhecedor
     result = @texto.match(regex).to_s
     parsed_date = nil
 
-    if result == "amanhã"
+    if result == "hoje"
+      parsed_date = DateTime.now
+    elsif result == "amanhã"
       parsed_date = DateTime.now
       parsed_date = parsed_date + 1
     elsif result == "depois de amanhã"
