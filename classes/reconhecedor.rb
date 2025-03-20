@@ -4,7 +4,8 @@ class Reconhecedor
   end
 
   def reconhecer_horario()
-    # Regex: (http(s)?:\/\/(www\.)?)?[A-z\-]+(\.[A-z\-]+)*(:[0-9]+)?(\/\w+)*\/?(\?(\w+=\w+)+(&\w+=\w+)*)?
+    regex = /(\d{1,2} e \d{1,2})|(\d{2}[:\s]\d{2})|((\d{1,2})( horas?)?)/
+    return @texto.match(regex)
   end
 
   def reconhecer_tarefa()
@@ -12,19 +13,22 @@ class Reconhecedor
   end
 
   def reconhecer_url()
-    # Regex http(s)?:\/\/(www\.)?[A-z\-]+(\.[A-z\-]+)*(:[0-9]+)?(\/\w+)*\/?(\?(\w+=\w+)+(&\w+=\w+)*)?
-    # Obs.: Esse regex não reconhece sem o https://
+    regex = /http(s)?:\/\/(www\.)?[A-z\-]+(\.[A-z\-]+)*(:[0-9]+)?(\/\w+)*\/?(\?(\w+=\w+)+(&\w+=\w+)*)?/
+    return @texto.match(regex)
   end
 
   def reconhecer_email()
-    # Regex: [A-z0-9]+[A-z0-9\.-]*@[A-z]+[A-z0-9\.-]*
+    regex = /[A-z0-9]+[A-z0-9\.-]*@[A-z]+[A-z0-9\.-]*/
+    return @texto.match(regex)
   end
 
   def reconhecer_tag()
-    # Regex: #\w+
+    regex = /#\w+/
+    return @texto.match(regex)
   end
 
   def reconhecer_pessoa()
-    # Regex: [A-Z]{1}[a-zà-ÿ]+
+    regex = /[A-Z]{1}[a-zà-ÿ]+/
+    return @texto.match(regex)
   end
 end
