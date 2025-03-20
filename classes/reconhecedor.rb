@@ -4,8 +4,11 @@ class Reconhecedor
   end
 
   def reconhecer_horario()
-    regex = /(\d{1,2} e \d{1,2})|(\d{2}[:\s]\d{2})|((\d{1,2})( horas?)?)/
-    return @texto.match(regex)
+    regex = /((\d{1,2}) e (\d{1,2}))|((\d{2})[:\s](\d{2}))|((\d{1,2})( horas?)?)/
+    resultRaw = regex.match(@texto).to_s
+    resultDigits = resultRaw.scan(/\d{1,2}/)
+    result = "#{resultDigits[0] || "00"}:#{resultDigits[1] || "00"}"
+    return result
   end
 
   def reconhecer_tarefa()
