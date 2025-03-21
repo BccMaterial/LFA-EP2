@@ -1,3 +1,5 @@
+require 'date'
+
 # Obs.:
 # Vamos precisar escolher ações para serem reconhecidas pelas tarefas.
 # Sugestões:
@@ -5,7 +7,10 @@
 # - Marcar
 # - Lembrar
 # - Ligar
-require 'date'
+# - Pegar
+# - Comprar
+# - Reservar
+# - Publicar
 
 class Reconhecedor
   def initialize(texto)
