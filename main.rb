@@ -9,5 +9,5 @@ email = reconhecedor.email()
 tags = reconhecedor.tags()
 data = reconhecedor.data()
 nova_tarefa = Tarefa.new(texto, tags, horario, data, nil, url, email, nil)
-puts nova_tarefa.to_s
+puts nova_tarefa
 # puts nova_tarefa
