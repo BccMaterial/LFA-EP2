@@ -18,7 +18,7 @@ class Reconhecedor
   end
 
   def horario()
-    regex = /(\d{1,2} e \d{1,2})|(\d{1,2}[:\s]\d{2})|(\d{1,2}( horas?))/
+    regex = /(\d{1,2} e \d{1,2})|(\d{1,2}h\d{1,2})|(\d{1,2}[:\s]\d{2})|(\d{1,2}( horas?))/
     resultRaw = regex.match(@texto).to_s
     resultDigits = resultRaw.scan(/\d{1,2}/)
     result = "#{resultDigits[0] || "00"}:#{resultDigits[1] || "00"}"
