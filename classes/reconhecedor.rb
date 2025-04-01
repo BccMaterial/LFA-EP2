@@ -40,9 +40,17 @@ class Reconhecedor
   return @texto.scan(regex)
   end
 
-  def pessoa()
-    regex = /[A-Z]{1}[a-zà-ÿ]+/
-    return @texto.match(regex)
+  def pessoas()
+    regex = /com\s[A-Z]{1}[a-zà-ÿ]+/
+    matches_not_clean = @texto.scan(regex)
+    pessoas = []
+    for match in matches_not_clean
+      unparsed_str = match.to_s
+      pessoa = unparsed_str.match(/[A-Z]{1}[a-zà-ÿ]+/)
+      pessoas.push pessoa.to_s
+    end
+
+    return pessoas
   end
 
   def data()
@@ -68,7 +76,6 @@ class Reconhecedor
   def acao()
     regex = /([Aa]gend|[Mm]arc|[Ll]embr|[Ll]ig|[Pp]eg|[Cc]ompr|[Rr]eserv|[Pp]ublic)(ar|er|em|amos|ei|de|ue|bre|ve)/
     texto = @texto.match(regex).to_s
-    puts texto
     return texto
   end
 end
