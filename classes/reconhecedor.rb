@@ -66,7 +66,7 @@ class Reconhecedor
   end
 
   def acao()
-    regex = /(agendar|marcar|lembrar|ligar|pegar|comprar|reservar|publicar)/
-    return @texto.match(regex).to_s
+    regex = /([a-z,ç]+)(ar|er|em|amos|ei|de|ue|bre|ve)/
+    return @texto.match(regex).to_s()
   end
 end
