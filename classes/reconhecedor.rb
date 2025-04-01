@@ -46,7 +46,7 @@ class Reconhecedor
   end
 
   def data()
-    regex = /(\d{2}\/\d{2}(\/\d{2}(\d{2})?)?)|(\d{2}(\sde)?\s\w+((\sde)?\s\d{4})?)|((hoje)|((depois\sde\s)?amanhã))/
+    regex = /((hoje)|((depois\sde\s)?amanhã))|(\d{2}\/\d{2}(\/\d{2}(\d{2})?)?)|(\d{2}(\sde)?\s\w+((\sde)?\d{4}))/
     result = @texto.match(regex).to_s
     parsed_date = nil
 
@@ -67,6 +67,8 @@ class Reconhecedor
 
   def acao()
     regex = /([a-z,ç]+)(ar|er|em|amos|ei|de|ue|bre|ve)/
-    return @texto.match(regex).to_s()
+    texto = @texto.match(regex).to_s
+    puts texto
+    return texto
   end
 end
