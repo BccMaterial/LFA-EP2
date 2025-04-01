@@ -1,22 +1,15 @@
 require './classes/tarefa.rb'
 require './classes/reconhecedor.rb'
 
-# Texto de exemplo
-texto = "Agendar reunião com José Silva às 14:30 amanhã #trabalho https://empresa.com contato@empresa.com"
-
-# Criação do reconhecedor e chamadas de métodos
+texto = "Agendar com José reunião às 10:00 amanhã #trabalho"
 reconhecedor = Reconhecedor.new(texto)
-
-horario = reconhecedor.horario()      # "14:30"
-url = reconhecedor.url()              # "https://empresa.com"
-email = reconhecedor.email()          # "contato@empresa.com"
-tags = reconhecedor.tags()            # ["#trabalho"]
-data = reconhecedor.data()            # Data de amanhã
-pessoa = reconhecedor.pessoa()        # "José Silva"
-acao = reconhecedor.acao()            # "Agendar"
-
-# Criação de uma nova tarefa
+horario = reconhecedor.horario()
+url = reconhecedor.url()
+email = reconhecedor.email()
+tags = reconhecedor.tags()
+data = reconhecedor.data()
+pessoa = reconhecedor.pessoa()
+acao = reconhecedor.acao()
 nova_tarefa = Tarefa.new(texto, tags, horario, data, acao, url, email, pessoa)
-
-# Exibição da tarefa
 puts nova_tarefa
+# puts nova_tarefa
