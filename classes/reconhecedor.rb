@@ -66,7 +66,7 @@ class Reconhecedor
   end
 
   def acao()
-    regex = /([a-z,ç]+)(ar|er|em|amos|ei|de|ue|bre|ve)/
+    regex = /([Aa]gend|[Mm]arc|[Ll]embr|[Ll]ig|[Pp]eg|[Cc]ompr|[Rr]eserv|[Pp]ublic)(ar|er|em|amos|ei|de|ue|bre|ve)/
     texto = @texto.match(regex).to_s
     puts texto
     return texto
