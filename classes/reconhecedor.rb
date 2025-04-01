@@ -37,13 +37,14 @@ class Reconhecedor
 
   def tags()
     regex = /#[\w-]+/
-  return @texto.scan(regex)
+    return @texto.scan(regex)
   end
 
   def pessoas()
     regex = /com\s[A-Z]{1}[a-zà-ÿ]+/
     matches_not_clean = @texto.scan(regex)
     pessoas = []
+
     for match in matches_not_clean
       unparsed_str = match.to_s
       pessoa = unparsed_str.match(/[A-Z]{1}[a-zà-ÿ]+/)

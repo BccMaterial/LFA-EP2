@@ -7,7 +7,14 @@ class ListaAfazeres
     @tarefas.append(tarefa)
   end
 
-  def listar_tarefas()
-    return @tarefas
+  def to_s()
+    converted_str = \
+    "########################\n"+
+    "### LISTA DE TAREFAS ###\n" +
+    "########################"
+    for tarefa in @tarefas
+      converted_str += "\n#{tarefa}"
+    end
+    return converted_str
   end
 end

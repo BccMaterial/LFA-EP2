@@ -20,6 +20,7 @@ class Tarefa
 
   def to_s
     return \
+    "-----------------------------\n" +
     "Texto: #{@texto}\n" +
     "Tags: #{@tags.join(" ")}\n" +
     "Data: #{@data.strftime('%d/%m/%Y')}\n" +
@@ -27,6 +28,7 @@ class Tarefa
     "Email: #{@email}\n" +
     "Url: #{@url}\n" +
     "Pessoas: #{@pessoas}\n" +
-    "Ação: #{@acao}"
+    "Ação: #{@acao}\n" +
+    "-----------------------------"
   end
 end
