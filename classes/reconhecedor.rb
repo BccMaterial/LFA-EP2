@@ -64,4 +64,9 @@ class Reconhecedor
 
     return parsed_date
   end
+
+  def acao()
+    regex = /(agendar|marcar|lembrar|ligar|pegar|comprar|reservar|publicar)/
+    return @texto.match(regex).to_s
+  end
 end
